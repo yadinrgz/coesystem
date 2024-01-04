@@ -41,6 +41,11 @@
                         <a href="<?php echo e(route('admin.category')); ?>" class="dash-link"><span class="dash-micon"><i class="ti ti-clipboard-list"></i></span><span class="dash-mtext"><?php echo e(__('Category')); ?></span></a>
                     </li>
                 <?php endif; ?> 
+                <?php if (app(\Illuminate\Contracts\Auth\Access\Gate::class)->check('manage-catalogos')): ?>
+                    <li class="dash-item <?php echo e((\Request::route()->getName()=='admin.catalogo' || \Request::route()->getName()=='admin.catalogo.create' || \Request::route()->getName()=='admin.catalogo.edit') ? ' active' : ''); ?>">
+                        <a href="<?php echo e(route('admin.catalogo')); ?>" class="dash-link"><span class="dash-micon"><i class="ti ti-clipboard-list"></i></span><span class="dash-mtext"><?php echo e(__('Catalogo')); ?></span></a>
+                    </li>
+                <?php endif; ?> 
                 <?php if (app(\Illuminate\Contracts\Auth\Access\Gate::class)->check('manage-faq')): ?>
                     <?php if(Utility::getSettingValByName('FAQ') == 'on'): ?> 
                         <li class="dash-item <?php echo e(request()->is('*faq*') ? ' active' : ''); ?>">
@@ -61,15 +66,15 @@
                     <?php endif; ?>                       
                 <?php endif; ?> 
                 <?php if(\Auth::user()->parent == 0): ?>
-              <!--   <li class="dash-item <?php echo e(request()->is('*email*') ? ' active' : ''); ?>">
+               <li class="dash-item <?php echo e(request()->is('*email*') ? ' active' : ''); ?>">
                     <a href="<?php echo e(route('manage.email.language',[$emailTemplate ->id,\Auth::user()->lang])); ?>" class="dash-link"><span class="dash-micon"><i class="ti ti-template"></i></span><span class="dash-mtext"><?php echo e(__('Email Template')); ?></span></a>
-                </li> -->
+                </li> 
                 <?php endif; ?>
                 <?php if(\Auth::user()->parent == 0): ?>
                 <?php if (app(\Illuminate\Contracts\Auth\Access\Gate::class)->check('manage-setting')): ?>
-                   <!--  <li class="dash-item <?php echo e(request()->is('*setting*') ? ' active' : ''); ?>">
+                     <li class="dash-item <?php echo e(request()->is('*setting*') ? ' active' : ''); ?>">
                         <a href="<?php echo e(route('admin.settings.index')); ?>" class="dash-link"><span class="dash-micon"><i class="ti ti-settings"></i></span><span class="dash-mtext"><?php echo e(__('Settings')); ?></span></a>
-                    </li> -->
+                    </li> 
                 <?php endif; ?>
                 <?php endif; ?>
             </ul>
