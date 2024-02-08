@@ -87,6 +87,8 @@
                                             <?php echo e(__('In Progress')); ?></option>
                                         <option value="On Hold" <?php if($ticket->status == 'On Hold'): ?> selected <?php endif; ?>>
                                             <?php echo e(__('On Hold')); ?></option>
+                                        <option value="On Waiting" <?php if($ticket->status == 'On Waiting'): ?> selected <?php endif; ?>>
+                                            <?php echo e(__('On Waiting')); ?></option>
                                         <option value="Closed" <?php if($ticket->status == 'Closed'): ?> selected <?php endif; ?>>
                                             <?php echo e(__('Closed')); ?></option>
                                     </select>

@@ -15,6 +15,7 @@
             <select class="form-select" id="projects" onchange="this.options[this.selectedIndex].value && (window.location = this.options[this.selectedIndex].value);">
                 <option value="{{route('admin.tickets.index')}}">{{__('All Tickets')}}</option>
                 <option value="{{route('admin.tickets.index', 'in-progress')}}" @if($status == 'in-progress') selected @endif>{{__('In Progress')}}</option>
+                <option value="{{route('admin.tickets.index', 'on-waiting')}}" @if($status == 'on-waiting') selected @endif>{{__('On Waiting')}}</option>
                 <option value="{{route('admin.tickets.index', 'on-hold')}}" @if($status == 'on-hold') selected @endif>{{__('On Hold')}}</option>
                 <option value="{{route('admin.tickets.index', 'closed')}}" @if($status == 'closed') selected @endif>{{__('Closed')}}</option>
             </select>

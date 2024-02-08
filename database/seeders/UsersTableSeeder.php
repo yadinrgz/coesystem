@@ -32,6 +32,7 @@ class UsersTableSeeder extends Seeder
             'edit-tickets',
             'delete-tickets',
             'manage-category',
+            'manage-catalogo',
             'create-category',
             'edit-category',
             'delete-category',

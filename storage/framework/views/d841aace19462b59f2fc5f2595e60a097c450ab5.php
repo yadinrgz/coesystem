@@ -1,7 +1,42 @@
+<?php
+// Conexión a la base de datos
+$servername = "localhost";
+$username = "root";
+$password = "root";
+$dbname = "soesystem";
+
+$conn = new mysqli($servername, $username, $password, $dbname);
+
+// Verificar la conexión
+if ($conn->connect_error) {
+    die("Conexión fallida: " . $conn->connect_error);
+}
+
+// Procesar el formulario cuando se envía
+if ($_SERVER["REQUEST_METHOD"] == "POST") {
+    // Recibir datos del formulario
+    $marca = $_POST['marca'];
+    $tipo_lente = $_POST['tipo_lente'];
+    $material = $_POST['material'];
+    $tratamiento = $_POST['tratamiento'];
+
+    // Insertar datos en la base de datos
+    $sql = "INSERT INTO catalogos (marca, tipo_lente, material, tratamiento) VALUES ('$marca', '$tipo_lente', '$material', '$tratamiento')";
+
+    if ($conn->query($sql) === TRUE) {
+        echo "Datos guardados correctamente";
+    } else {
+        echo "Error al guardar datos: " . $conn->error;
+    }
+}
+?>
+
+
+
 <?php $__env->startSection('page-title'); ?>
 <?php echo e(__('Email Templates')); ?>
 
-<?php $__env->stopSection(); ?>
+@endsectiona
 
 <?php $__env->startSection('breadcrumb'); ?>
     <li class="breadcrumb-item"><a href="<?php echo e(route('home')); ?>"><?php echo e(__('Home')); ?></a></li>
@@ -89,86 +124,46 @@
                         <div class="row"> 
                             <h6><?php echo e(__('Place Holders')); ?></h6>
                             <div class="col-lg-12 col-md-9 col-sm-12 language-form-wrap">
-    
-                                <div class="card">
-                                    <div class="card-header card-body">
-                                        <div class="row text-xs">
-                                            <?php if($emailTemplate->slug=='new_ticket'): ?>
-                                                <div class="row">
-                                                    
-                                                    <p class="col-6"><?php echo e(__('App Name')); ?> : <span class="pull-end text-primary">{app_name}</span></p>
-                                                    <p class="col-6"><?php echo e(__('Ticket Name')); ?> : <span class="pull-right text-primary">{ticket_name}</span></p>
-                                                    <p class="col-6"><?php echo e(__('Ticket Id')); ?> : <span class="pull-right text-primary">{ticket_id}</span></p>
-                                                    <p class="col-6"><?php echo e(__('App Url')); ?> : <span class="pull-right text-primary">{app_url}</span></p>
-                                                    <p class="col-6"><?php echo e(__('Email')); ?> : <span class="pull-right text-primary">{email}</span></p>
-                                                    <p class="col-6"><?php echo e(__('Password')); ?> : <span class="pull-right text-primary">{password}</span></p>
-                                                </div>
-                                            <?php elseif($emailTemplate->slug=='new_ticket_reply'): ?>
-                                                <div class="row">
-                                                    
-                                                    <p class="col-6"><?php echo e(__('App Name')); ?> : <span class="pull-end text-primary">{app_name}</span></p>
-                                                    <p class="col-6"><?php echo e(__('Company Name')); ?> : <span class="pull-right text-primary">{company_name}</span></p>
-                                                    <p class="col-6"><?php echo e(__('App Url')); ?> : <span class="pull-right text-primary">{app_url}</span></p>
-                                                    <p class="col-6"><?php echo e(__('Ticket Name')); ?> : <span class="pull-right text-primary">{ticket_name}</span></p>
-                                                    <p class="col-6"><?php echo e(__('Ticket Id')); ?> : <span class="pull-right text-primary">{ticket_id}</span></p>
-                                                    <p class="col-6"><?php echo e(__('Ticket Description')); ?> : <span class="pull-right text-primary">{ticket_description}</span></p>
-                                                    
-                                                </div>
-                                            <?php elseif($emailTemplate->slug=='new_user'): ?>
-                                                <div class="row">
-                                                    
-                                                    <p class="col-6"><?php echo e(__('App Name')); ?> : <span class="pull-end text-primary">{app_name}</span></p>
-                                                    <p class="col-6"><?php echo e(__('Company Name')); ?> : <span class="pull-right text-primary">{company_name}</span></p>
-                                                    <p class="col-6"><?php echo e(__('App Url')); ?> : <span class="pull-right text-primary">{app_url}</span></p>
-                                                    <p class="col-6"><?php echo e(__('Email')); ?> : <span class="pull-right text-primary">{email}</span></p>
-                                                    <p class="col-6"><?php echo e(__('Password')); ?> : <span class="pull-right text-primary">{password}</span></p>
-                                                </div>
-                                            <?php endif; ?>
-                                        </div>
-                                    </div>
-                                </div>
-                            </div>
-                            <div class="col-lg-12 col-md-9 col-sm-12 language-form-wrap">
-                                <?php echo e(Form::model($currEmailTempLang, array('route' => array('email_template.update', $currEmailTempLang->parent_id), 'method' => 'PUT'))); ?>
 
-                                <div class="row">
-                                    <div class="form-group col-12">
-                                        <?php echo e(Form::label('subject',__('Subject'),['class'=>'form-control-label text-dark'])); ?>
 
-                                        <?php echo e(Form::text('subject',null,array('class'=>'form-control font-style','required'=>'required'))); ?>
+                            <form action="<?php echo htmlspecialchars($_SERVER["PHP_SELF"]); ?>" method="post">
+                              
+                            
+                            
+                            <div class="row">
+                                    <div class="form-group col-6">
+                                    <label for="marca">Marca:</label>
 
+
+        <select class="form-select" name="marca" required>
+            <option value="SETO">SETO</option>
+            <option value="SEIZZ">SEIZZ</option>
+        </select>
+        <br>
                                     </div>
                                     
                                     <div class="form-group col-md-6">
-                                        <?php echo e(Form::label('name',__('Name'),['class'=>'form-control-label text-dark'])); ?>
-
-                                        <?php echo e(Form::text('name',$emailTemplate->name,['class'=>'form-control font-style','disabled'=>'disabled'])); ?>
-
+                                        <label for="from" class="form-control-label text-dark">Tipo de lente </label>
+                                        <input class="form-control font-style" required="required" name="tipo_lente" type="text" value="" id="tipolente">
                                     </div>
                                     <div class="form-group col-md-6">
-                                        <?php echo e(Form::label('from',__('From'),['class'=>'form-control-label text-dark'])); ?>
-
-                                        <?php echo e(Form::text('from', $emailTemplate->from, ['class' => 'form-control font-style', 'required' => 'required'])); ?>
-
+                                        <label for="from" class="form-control-label text-dark">Material </label>
+                                        <input class="form-control font-style" required="required" name="material" type="text" value="" id="from">
                                     </div>
-                                    <div class="form-group col-12">
-                                        <?php echo e(Form::label('content',__('Email Message'),['class'=>'form-control-label text-dark'])); ?>
-
-                                        <?php echo e(Form::textarea('content',$currEmailTempLang->content,array('class'=>'pc-tinymce-2','required'=>'required'))); ?>
-
-    
+                                    <div class="form-group col-md-6">
+                                        <label for="from" class="form-control-label text-dark">Tratamiento </label>
+                                        <input class="form-control font-style" required="required" name="tratamiento" type="text" value="" id="from">
                                     </div>
                                 
                                    
                                     <div class="col-md-12 text-end">
-                                        <?php echo e(Form::hidden('lang',null)); ?>
+                                        <button type="submit" class="btn btn-print-invoice  btn-primary">Guardar</button>
 
-                                        <input type="submit" value="<?php echo e(__('Save')); ?>" class="btn btn-print-invoice  btn-primary">
-                                    </div>
+<!--                                         <input type="submit" value="<?php echo e(__('Save')); ?>" >
+ -->                                    </div>
                                
                                 </div>
-                                <?php echo e(Form::close()); ?>
-
+                            </form>
                             </div>
                         </div>
                     </div>

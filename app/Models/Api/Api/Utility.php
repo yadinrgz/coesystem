@@ -19,6 +19,7 @@ class Utility extends Model
     {
 
         $status[] = ['name'=>'In Progress'];
+        $status[] = ['name'=>'On Waiting'];
         $status[] = ['name'=>'On Hold'];
         $status[] = ['name'=>'Closed'];
 

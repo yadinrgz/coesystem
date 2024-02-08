@@ -1,8 +1,41 @@
+<?php
+// Conexión a la base de datos
+$servername = "localhost";
+$username = "root";
+$password = "root";
+$dbname = "soesystem";
+
+$conn = new mysqli($servername, $username, $password, $dbname);
+
+// Verificar la conexión
+if ($conn->connect_error) {
+    die("Conexión fallida: " . $conn->connect_error);
+}
+
+// Procesar el formulario cuando se envía
+if ($_SERVER["REQUEST_METHOD"] == "POST") {
+    // Recibir datos del formulario
+    $marca = $_POST['marca'];
+    $tipo_lente = $_POST['tipo_lente'];
+    $material = $_POST['material'];
+    $tratamiento = $_POST['tratamiento'];
+
+    // Insertar datos en la base de datos
+    $sql = "INSERT INTO catalogos (marca, tipo_lente, material, tratamiento) VALUES ('$marca', '$tipo_lente', '$material', '$tratamiento')";
+
+    if ($conn->query($sql) === TRUE) {
+        echo "Datos guardados correctamente";
+    } else {
+        echo "Error al guardar datos: " . $conn->error;
+    }
+}
+?>
+
 @extends('layouts.admin')
 
 @section('page-title')
 {{__('Email Templates')}}
-@endsection
+@endsectiona
 
 @section('breadcrumb')
     <li class="breadcrumb-item"><a href="{{ route('home') }}">{{ __('Home') }}</a></li>
@@ -89,75 +122,46 @@
                         <div class="row"> 
                             <h6>{{ __('Place Holders') }}</h6>
                             <div class="col-lg-12 col-md-9 col-sm-12 language-form-wrap">
-    
-                                <div class="card">
-                                    <div class="card-header card-body">
-                                        <div class="row text-xs">
-                                            @if($emailTemplate->slug=='new_ticket')
-                                                <div class="row">
-                                                    {{-- <h6 class="font-weight-bold pb-3">{{__('New Ticket')}}</h6> --}}
-                                                    <p class="col-6">{{__('App Name')}} : <span class="pull-end text-primary">{app_name}</span></p>
-                                                    <p class="col-6">{{__('Ticket Name')}} : <span class="pull-right text-primary">{ticket_name}</span></p>
-                                                    <p class="col-6">{{__('Ticket Id')}} : <span class="pull-right text-primary">{ticket_id}</span></p>
-                                                    <p class="col-6">{{__('App Url')}} : <span class="pull-right text-primary">{app_url}</span></p>
-                                                    <p class="col-6">{{__('Email')}} : <span class="pull-right text-primary">{email}</span></p>
-                                                    <p class="col-6">{{__('Password')}} : <span class="pull-right text-primary">{password}</span></p>
-                                                </div>
-                                            @elseif($emailTemplate->slug=='new_ticket_reply')
-                                                <div class="row">
-                                                    {{-- <h6 class="font-weight-bold pb-3">{{__('New Ticket Reply')}}</h6> --}}
-                                                    <p class="col-6">{{__('App Name')}} : <span class="pull-end text-primary">{app_name}</span></p>
-                                                    <p class="col-6">{{__('Company Name')}} : <span class="pull-right text-primary">{company_name}</span></p>
-                                                    <p class="col-6">{{__('App Url')}} : <span class="pull-right text-primary">{app_url}</span></p>
-                                                    <p class="col-6">{{__('Ticket Name')}} : <span class="pull-right text-primary">{ticket_name}</span></p>
-                                                    <p class="col-6">{{__('Ticket Id')}} : <span class="pull-right text-primary">{ticket_id}</span></p>
-                                                    <p class="col-6">{{__('Ticket Description')}} : <span class="pull-right text-primary">{ticket_description}</span></p>
-                                                    
-                                                </div>
-                                            @elseif($emailTemplate->slug=='new_user')
-                                                <div class="row">
-                                                    {{-- <h6 class="font-weight-bold pb-3">{{__('New User')}}</h6> --}}
-                                                    <p class="col-6">{{__('App Name')}} : <span class="pull-end text-primary">{app_name}</span></p>
-                                                    <p class="col-6">{{__('Company Name')}} : <span class="pull-right text-primary">{company_name}</span></p>
-                                                    <p class="col-6">{{__('App Url')}} : <span class="pull-right text-primary">{app_url}</span></p>
-                                                    <p class="col-6">{{__('Email')}} : <span class="pull-right text-primary">{email}</span></p>
-                                                    <p class="col-6">{{__('Password')}} : <span class="pull-right text-primary">{password}</span></p>
-                                                </div>
-                                            @endif
-                                        </div>
-                                    </div>
-                                </div>
-                            </div>
-                            <div class="col-lg-12 col-md-9 col-sm-12 language-form-wrap">
-                                {{Form::model($currEmailTempLang, array('route' => array('email_template.update', $currEmailTempLang->parent_id), 'method' => 'PUT')) }}
-                                <div class="row">
-                                    <div class="form-group col-12">
-                                        {{Form::label('subject',__('Subject'),['class'=>'form-control-label text-dark'])}}
-                                        {{Form::text('subject',null,array('class'=>'form-control font-style','required'=>'required'))}}
+
+
+                            <form action="<?php echo htmlspecialchars($_SERVER["PHP_SELF"]); ?>" method="post">
+                              
+                            
+                            
+                            <div class="row">
+                                    <div class="form-group col-6">
+                                    <label for="marca">Marca:</label>
+
+
+        <select class="form-select" name="marca" required>
+            <option value="SETO">SETO</option>
+            <option value="SEIZZ">SEIZZ</option>
+        </select>
+        <br>
                                     </div>
                                     
                                     <div class="form-group col-md-6">
-                                        {{Form::label('name',__('Name'),['class'=>'form-control-label text-dark'])}}
-                                        {{Form::text('name',$emailTemplate->name,['class'=>'form-control font-style','disabled'=>'disabled'])}}
+                                        <label for="from" class="form-control-label text-dark">Tipo de lente </label>
+                                        <input class="form-control font-style" required="required" name="tipo_lente" type="text" value="" id="tipolente">
                                     </div>
                                     <div class="form-group col-md-6">
-                                        {{Form::label('from',__('From'),['class'=>'form-control-label text-dark'])}}
-                                        {{ Form::text('from', $emailTemplate->from, ['class' => 'form-control font-style', 'required' => 'required']) }}
+                                        <label for="from" class="form-control-label text-dark">Material </label>
+                                        <input class="form-control font-style" required="required" name="material" type="text" value="" id="from">
                                     </div>
-                                    <div class="form-group col-12">
-                                        {{Form::label('content',__('Email Message'),['class'=>'form-control-label text-dark'])}}
-                                        {{Form::textarea('content',$currEmailTempLang->content,array('class'=>'pc-tinymce-2','required'=>'required'))}}
-    
+                                    <div class="form-group col-md-6">
+                                        <label for="from" class="form-control-label text-dark">Tratamiento </label>
+                                        <input class="form-control font-style" required="required" name="tratamiento" type="text" value="" id="from">
                                     </div>
                                 
                                    
                                     <div class="col-md-12 text-end">
-                                        {{Form::hidden('lang',null)}}
-                                        <input type="submit" value="{{__('Save')}}" class="btn btn-print-invoice  btn-primary">
-                                    </div>
+                                        <button type="submit" class="btn btn-print-invoice  btn-primary">Guardar</button>
+
+<!--                                         <input type="submit" value="{{__('Save')}}" >
+ -->                                    </div>
                                
                                 </div>
-                                {{ Form::close() }}
+                            </form>
                             </div>
                         </div>
                     </div>

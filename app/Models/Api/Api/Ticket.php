@@ -15,6 +15,18 @@ class Ticket extends Model
         'category',
         'subject',
         'status',
+        'esfera_izq',
+        'esfera_der',
+        'cilindro_izq',
+        'cilindro_der',
+        'eje_izq',
+        'eje_der',
+        'adicion_izq',
+        'adicion_der',
+        'dnp_izq',
+        'dnp_der',
+        'altura_izq',
+        'altura_der',
         'description',
         'attachments',
         'note',
@@ -193,7 +205,7 @@ class Ticket extends Model
         for($i = 0; $i < count($arrDate); $i++)
         {
 
-            $aopen_ticket = Ticket::whereIn('status', ['On Hold','In Progress'])->whereDate('created_at', $arrDate[$i])->get();
+            $aopen_ticket = Ticket::whereIn('status', ['On Hold','In Progress','On Waiting  '])->whereDate('created_at', $arrDate[$i])->get();
             $open_ticket[] =  count($aopen_ticket);
             // unset($open_ticket);
 

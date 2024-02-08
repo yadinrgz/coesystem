@@ -43,6 +43,12 @@ class TicketController extends Controller
             {
                 $tickets->where('status', '=', 'On Hold');
             }
+
+            elseif($status == 'on-waiting')
+            {
+                $tickets->where('status', '=', 'On Waiting');
+            }
+
             elseif($status == 'closed')
             {
                 $tickets->where('status', '=', 'Closed');

@@ -13,6 +13,18 @@ class Ticket extends Model
         'category',
         'subject',
         'status',
+        'esfera_izq',
+        'esfera_der',
+        'cilindro_izq',
+        'cilindro_der',
+        'eje_izq',
+        'eje_der',
+        'adicion_izq',
+        'adicion_der',
+        'dnp_izq',
+        'dnp_der',
+        'altura_izq',
+        'altura_der',
         'description',
         'attachments',
         'note',
@@ -32,8 +44,7 @@ class Ticket extends Model
     {
         $categoryArr  = explode(',', $category);
         $unitRate = 0;
-        foreach($categoryArr as $username)
-        {
+        foreach ($categoryArr as $username) {
             $category     = Category::find($category);
             $unitRate     = $category->name;
         }

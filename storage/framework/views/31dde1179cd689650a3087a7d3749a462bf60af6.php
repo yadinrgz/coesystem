@@ -14,6 +14,7 @@
             <select class="form-select" id="projects" onchange="this.options[this.selectedIndex].value && (window.location = this.options[this.selectedIndex].value);">
                 <option value="<?php echo e(route('admin.tickets.index')); ?>"><?php echo e(__('All Tickets')); ?></option>
                 <option value="<?php echo e(route('admin.tickets.index', 'in-progress')); ?>" <?php if($status == 'in-progress'): ?> selected <?php endif; ?>><?php echo e(__('In Progress')); ?></option>
+                <option value="<?php echo e(route('admin.tickets.index', 'on-waiting')); ?>" <?php if($status == 'on-waiting'): ?> selected <?php endif; ?>><?php echo e(__('On Waiting')); ?></option>
                 <option value="<?php echo e(route('admin.tickets.index', 'on-hold')); ?>" <?php if($status == 'on-hold'): ?> selected <?php endif; ?>><?php echo e(__('On Hold')); ?></option>
                 <option value="<?php echo e(route('admin.tickets.index', 'closed')); ?>" <?php if($status == 'closed'): ?> selected <?php endif; ?>><?php echo e(__('Closed')); ?></option>
             </select>

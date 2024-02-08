@@ -58,6 +58,11 @@ class TicketController extends Controller
                 $ticket_query->where( 'status', 'In Progress');
             }
 
+            if($request->period == "waiting"){
+
+                $ticket_query->where( 'status', 'On Waiting');
+            }
+
             if($request->period == "closed"){
                 $ticket_query->where( 'status', 'Closed');
 
@@ -85,7 +90,7 @@ class TicketController extends Controller
 
 
         $new_ticket = Ticket::whereDate('created_at', Carbon::today())->count();
-        $open_ticket  = Ticket::whereIn('status', ['On Hold','In Progress'])->count();
+        $open_ticket  = Ticket::whereIn('status', ['On Hold','In Progress','On Waiting'])->count();
         $close_ticket = Ticket::where('status', '=', 'Closed')->count();
 
         $total_ticket = $new_ticket+$open_ticket+$close_ticket;

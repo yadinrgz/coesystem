@@ -21,6 +21,18 @@ class CreateTicketsTable extends Migration
             $table->integer('category');
             $table->string('subject');
             $table->string('status');
+            $table->string('esfera_izq');
+            $table->string('esfera_der');
+            $table->string('cilindro_izq');
+            $table->string('cilindro_der');
+            $table->string('eje_izq');
+            $table->string('eje_der');
+            $table->string('adicion_izq');
+            $table->string('adicion_der');
+            $table->string('dnp_izq');
+            $table->string('dnp_der');
+            $table->string('altura_izq');
+            $table->string('altura_der');
             $table->longText('description');
             $table->longText('attachments');
             $table->timestamps();

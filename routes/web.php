@@ -2,6 +2,7 @@
 
 use Illuminate\Support\Facades\Route;
 use App\Http\Controllers\HomeController;
+use App\Http\Controllers\CatalogoController;
 use App\Http\Controllers\FaqKnwlController;
 use App\Http\Controllers\UserController;
 use App\Http\Controllers\DashboardController;
@@ -65,6 +66,10 @@ Route::name('admin.')->prefix('admin')->middleware(['auth','XSS'])->group(functi
     Route::get('lang/change/{lang}', [LanguageController::class, 'update'])->name('lang.update');
     Route::delete('lang/{lang}', [LanguageController::class, 'destroyLang'])->name('lang.destroy');
 
+
+//RUTAS CATALOGOS
+    Route::get('catalogo/create', [CatalogoController::class, 'create'])->name('catalogo.create');
+    // Agrega otras rutas según sea necesario
 
     Route::get('category/create', [CategoryController::class, 'create'])->name('category.create');
     Route::post('category', [CategoryController::class, 'store'])->name('category.store');

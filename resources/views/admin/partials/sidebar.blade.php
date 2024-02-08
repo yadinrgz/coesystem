@@ -42,11 +42,11 @@
                         <a href="{{ route('admin.category') }}" class="dash-link"><span class="dash-micon"><i class="ti ti-clipboard-list"></i></span><span class="dash-mtext">{{ __('Category') }}</span></a>
                     </li>
                 @endcan 
-                @can('manage-catalogos')
-                    <li class="dash-item {{ (\Request::route()->getName()=='admin.catalogo' || \Request::route()->getName()=='admin.catalogo.create' || \Request::route()->getName()=='admin.catalogo.edit') ? ' active' : '' }}">
-                        <a href="{{ route('admin.catalogo') }}" class="dash-link"><span class="dash-micon"><i class="ti ti-clipboard-list"></i></span><span class="dash-mtext">{{ __('Catalogo') }}</span></a>
+                @can('manage-catalogo')
+                    <li class="dash-item {{ request()->is('*catalogo*') ? ' active' : '' }}">
+                        <a href="{{ route('admin.catalogo') }}" class="dash-link"><span class="dash-micon"><i class="ti ti-users"></i></span><span class="dash-mtext">{{ __('Catalogo') }}</span></a>
                     </li>
-                @endcan 
+                @endcan
                 @can('manage-faq')
                     @if(Utility::getSettingValByName('FAQ') == 'on') 
                         <li class="dash-item {{ request()->is('*faq*') ? ' active' : '' }}">
@@ -72,11 +72,11 @@
                 </li> 
                 @endif
                 @if (\Auth::user()->parent == 0)
-                @can('manage-setting')
+              <!--   @can('manage-setting')
                      <li class="dash-item {{ request()->is('*setting*') ? ' active' : '' }}">
                         <a href="{{ route('admin.settings.index') }}" class="dash-link"><span class="dash-micon"><i class="ti ti-settings"></i></span><span class="dash-mtext">{{ __('Settings') }}</span></a>
                     </li> 
-                @endcan
+                @endcan -->
                 @endif
             </ul>
         </div>

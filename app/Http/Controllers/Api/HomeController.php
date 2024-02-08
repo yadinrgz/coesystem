@@ -21,7 +21,7 @@ class HomeController extends Controller
         $user = User::find($request['id']);
 
         $categories   = Category::count();
-        $open_ticket  = Ticket::whereIn('status', ['On Hold','In Progress'])->count();
+        $open_ticket  = Ticket::whereIn('status', ['On Hold','In Progress','On Waiting'])->count();
         $close_ticket = Ticket::where('status', '=', 'Closed')->count();
         $agents       = \DB::table('model_has_roles')->where('model_type', '=', 'App\Models\User')->where('role_id', '=', '2')->count();
 
@@ -70,7 +70,7 @@ class HomeController extends Controller
         // Start Ticket Analytics
 
             $anew_ticket = Ticket::whereDate('created_at', Carbon::today())->count();
-            $aopen_ticket  = Ticket::whereIn('status', ['On Hold','In Progress'])->count();
+            $aopen_ticket  = Ticket::whereIn('status', ['On Hold','In Progress','On Waiting'])->count();
             $aclose_ticket = Ticket::where('status', '=', 'Closed')->count();
 
 

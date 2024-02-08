@@ -84,6 +84,8 @@
                                             {{ __('In Progress') }}</option>
                                         <option value="On Hold" @if ($ticket->status == 'On Hold') selected @endif>
                                             {{ __('On Hold') }}</option>
+                                        <option value="On Waiting" @if ($ticket->status == 'On Waiting') selected @endif>
+                                            {{ __('On Waiting') }}</option>
                                         <option value="Closed" @if ($ticket->status == 'Closed') selected @endif>
                                             {{ __('Closed') }}</option>
                                     </select>
