@@ -71,11 +71,11 @@
                 </li> 
                 <?php endif; ?>
                 <?php if(\Auth::user()->parent == 0): ?>
-              <!--   <?php if (app(\Illuminate\Contracts\Auth\Access\Gate::class)->check('manage-setting')): ?>
+                 <?php if (app(\Illuminate\Contracts\Auth\Access\Gate::class)->check('manage-setting')): ?>
                      <li class="dash-item <?php echo e(request()->is('*setting*') ? ' active' : ''); ?>">
                         <a href="<?php echo e(route('admin.settings.index')); ?>" class="dash-link"><span class="dash-micon"><i class="ti ti-settings"></i></span><span class="dash-mtext"><?php echo e(__('Settings')); ?></span></a>
                     </li> 
-                <?php endif; ?> -->
+                <?php endif; ?> 
                 <?php endif; ?>
             </ul>
         </div>

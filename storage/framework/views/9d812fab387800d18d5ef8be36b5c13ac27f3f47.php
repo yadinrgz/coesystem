@@ -11,14 +11,14 @@
 ?>
 <?php $__env->startSection('content'); ?>
 
-    <div class="auth-wrapper auth-v1">
+<!--     <div class="auth-wrapper auth-v1">
         <div class="bg-auth-side bg-primary"></div>
         <div class="auth-content">
-
+        <h1>jindex bladeee</h1>
             <nav class="navbar navbar-expand-md navbar-dark default dark_background_color">
                 <div class="container-fluid pe-2">
                     <a class="navbar-brand" href="#">
-                        
+                 
                         <img src="<?php echo e($logos.'logo-light.png'); ?>" alt="logo" />
                         
                     </a>
@@ -121,7 +121,7 @@ unset($__errorArgs, $__bag); ?>
             </div>
 
         </div>
-    </div>
+    </div> -->
 
     <div class="row w-100 pb-2">
         <div class="col-sm-12 col-md-2 col-lg-2">

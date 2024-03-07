@@ -27,6 +27,16 @@ class Ticket extends Model
         'dnp_der',
         'altura_izq',
         'altura_der',
+        'horizontal',
+        'puente',
+        'vertical',
+        'diagonal',
+        'tipo_lente',
+        'biselado',
+        'tipo_armazon',
+        'material',
+        'tratamiento',
+        'tinte',
         'description',
         'attachments',
         'note',
@@ -36,7 +46,7 @@ class Ticket extends Model
 
     public function getColorAttribute()
     {
-       
+
         $category = Category::find($this->attributes['category']);
         $category = (!empty($category->color)) ? $category->color : '';
 
@@ -55,10 +65,10 @@ class Ticket extends Model
     {
         $attachments = $this->attributes['attachments'];
         $attachment = json_decode($attachments, true);
-            $attachments_arr=[];
-            foreach ($attachment as $key => $value) {
-                    $attachments_arr[]=$value;
-            }
+        $attachments_arr = [];
+        foreach ($attachment as $key => $value) {
+            $attachments_arr[] = $value;
+        }
         return $attachments_arr;
     }
 
@@ -68,16 +78,16 @@ class Ticket extends Model
 
     //     $tickets=[];
     //     foreach($latest_tickets as $ticket){
-            
+
     //         if($ticket->attachments){
 
     //             $attachment = json_decode($ticket->attachments, true);
-                
+
     //             $attachments=[];
     //             foreach ($attachment as $key => $value) {
     //                 $attachments[]=$value;
     //             }
-        
+
     //         }
 
     //         $tickets[]=[
@@ -101,9 +111,9 @@ class Ticket extends Model
     public static function Ticket($data)
     {
 
-    // if($data['search']){
+        // if($data['search']){
         //     $search = $data['search'];
-            
+
         //     $ticket_query->where('name', 'like', "%$search%")->orwhere('ticket_id', 'like', "%$search%");
         // }
 
@@ -123,7 +133,7 @@ class Ticket extends Model
 
         //     if($data['period'] == 'today'){
 
-                
+
         //     }
 
         //     if($data['period'] == 'week'){
@@ -132,7 +142,7 @@ class Ticket extends Model
         //         $end_week = strtotime("next saturday",$start_week);
         //         $startDate = date("Y-m-d",$start_week);
         //         $endDate = date("Y-m-d",$end_week);
-            
+
         //     }
 
         //     if($data['period'] == 'month'){
@@ -145,11 +155,11 @@ class Ticket extends Model
 
         // }
 
-       
+
         // else{
         // }
         // $ticket_query->orderBy('id', 'desc');   
-     
+
 
         return $tickets;
     }
@@ -170,18 +180,17 @@ class Ticket extends Model
     {
         $categoryArr  = explode(',', $category);
         $unitRate = 0;
-        foreach($categoryArr as $username)
-        {
+        foreach ($categoryArr as $username) {
             $category     = Category::find($category);
             $unitRate     = $category->name;
         }
         return $unitRate;
     }
-    
-    
+
+
     public static function getIncExpLineChartDate()
     {
-      
+
         $m             = date("m");
         $de            = date("d");
         $y             = date("Y");
@@ -189,23 +198,21 @@ class Ticket extends Model
         $arrDate       = [];
         $arrDateFormat = [];
 
-        for($i = 7; $i >= 0; $i--)
-        {
+        for ($i = 7; $i >= 0; $i--) {
             $date = date($format, mktime(0, 0, 0, $m, ($de - $i), $y));
 
             $arrDay[]        = date('D', mktime(0, 0, 0, $m, ($de - $i), $y));
             $arrDate[]       = $date;
-            $arrDateFormat[] = date("d", strtotime($date)) .'-'.__(date("M", strtotime($date)));
+            $arrDateFormat[] = date("d", strtotime($date)) . '-' . __(date("M", strtotime($date)));
         }
         $data['day'] = $arrDateFormat;
 
         $open_ticket = array();
         $close_ticket = array();
 
-        for($i = 0; $i < count($arrDate); $i++)
-        {
+        for ($i = 0; $i < count($arrDate); $i++) {
 
-            $aopen_ticket = Ticket::whereIn('status', ['On Hold','In Progress','On Waiting  '])->whereDate('created_at', $arrDate[$i])->get();
+            $aopen_ticket = Ticket::whereIn('status', ['On Hold', 'In Progress', 'On Waiting  '])->whereDate('created_at', $arrDate[$i])->get();
             $open_ticket[] =  count($aopen_ticket);
             // unset($open_ticket);
 

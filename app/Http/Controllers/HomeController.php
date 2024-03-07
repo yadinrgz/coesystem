@@ -107,7 +107,7 @@ class HomeController extends Controller
             'category' => 'required|string|max:255',
             'subject' => 'required|string|max:255',
             'status' => 'required|string|max:100',
-            'description' => 'required',
+          /*   'description' => 'required', */
         ];
 
         if(env('RECAPTCHA_MODULE') == 'yes')
@@ -157,7 +157,7 @@ class HomeController extends Controller
             'category' => $request->category,
             'subject' => $request->subject,
             'status' => $request->status,
-            'description' => $request->description,
+/*             'description' => $request->description, */
         ];
 
         // $resp = Utility::sendEmailTemplate('create_ticket', [$ticket->email], $uArr);

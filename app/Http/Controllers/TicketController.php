@@ -103,7 +103,7 @@ class TicketController extends Controller
                 'category' => 'required|string|max:255',
                 'subject' => 'required|string|max:255',
                 'status' => 'required|string|max:100',
-                'description' => 'required',
+               /*  'description' => 'required', */
             ];
 
             $this->validate($request, $validation);
@@ -264,8 +264,8 @@ class TicketController extends Controller
                     'category' => 'required|string|max:255',
                     'subject' => 'required|string|max:255',
                     'status' => 'required|string|max:100',
-                    'description' => 'required',
-                ];
+/*                     'description' => 'required',
+ */                ];
 
                 $this->validate($request, $validation);
 

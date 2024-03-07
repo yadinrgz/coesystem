@@ -92,124 +92,190 @@
                         <!-- FORMULARIO -->
                         <!-- FORMULARIO -->
                         <!-- FORMULARIO -->
-<div class="row">
-                        <div class="form-group col-md-1">
-                            <label class="require form-label">O.D.</label>
-                            
-                        </div>
-                        <div class="form-group col">
-                            <label class="require form-label">ESFERA</label>
-                            <input type="number" class="form-control" id="valorInput" min="-6" max="8" step="0.01" placeholder="">
-  <div class="invalid-feedback">
-    Por favor, ingresa un valor válido entre -6.00 y +8.00.
-  </div>
-                        </div>
-                        <div class="form-group col">
-                            <label class="require form-label">CILINDRO</label>
-                            <input class="form-control {{(!empty($errors->first('subject')) ? 'is-invalid' : '')}}" type="text" name="subject" required="" placeholder="{{ __('Subject') }}">
-                            <div class="invalid-feedback">
-                                {{ $errors->first('subject') }}
+                        <div class="row text-center">
+                            <div class="form-group col-md-1">
+                                <label class="require form-label  mt-4 pt-3">O.D.</label>
+
                             </div>
-                        </div>
-                        <div class="form-group col">
-                            <label class="require form-label">EJE</label>
-                            <input class="form-control {{(!empty($errors->first('subject')) ? 'is-invalid' : '')}}" type="text" name="subject" required="" placeholder="{{ __('Subject') }}">
-                            <div class="invalid-feedback">
-                                {{ $errors->first('subject') }}
+                            <div class="form-group col">
+                                <label class="require form-label">ESFERA</label>
+                                <input type="number" class="form-control" name="esfera_der" id="valorInput" min="-6" max="8" step="0.01" placeholder="">
+                                <div class="invalid-feedback">
+                                    Por favor, ingresa un valor válido entre -6.00 y +8.00.
+                                </div>
                             </div>
-                        </div>
-                        <div class="form-group col">
-                            <label class="require form-label">ADICION</label>
-                            <input class="form-control {{(!empty($errors->first('subject')) ? 'is-invalid' : '')}}" type="text" name="subject" required="" placeholder="{{ __('Subject') }}">
-                            <div class="invalid-feedback">
-                                {{ $errors->first('subject') }}
+                            <div class="form-group col">
+                                <label class="require form-label">CILINDRO</label>
+                                <input class="form-control {{(!empty($errors->first('subject')) ? 'is-invalid' : '')}}" type="text" name="cilindro_der" required="" placeholder="{{ __('Subject') }}">
+                                <div class="invalid-feedback">
+                                    {{ $errors->first('subject') }}
+                                </div>
                             </div>
-                        </div>                     
-                        <div class="form-group col">
-                            <label class="require form-label">D.N.P.</label>
-                            <input class="form-control {{(!empty($errors->first('subject')) ? 'is-invalid' : '')}}" type="text" name="subject" required="" placeholder="{{ __('Subject') }}">
-                            <div class="invalid-feedback">
-                                {{ $errors->first('subject') }}
+                            <div class="form-group col">
+                                <label class="require form-label">EJE</label>
+                                <input class="form-control {{(!empty($errors->first('subject')) ? 'is-invalid' : '')}}" type="text" name="eje_der" required="" placeholder="{{ __('Subject') }}">
+                                <div class="invalid-feedback">
+                                    {{ $errors->first('subject') }}
+                                </div>
                             </div>
-                        </div>
-                        <div class="form-group col">
-                            <label class="require form-label">ALTURA</label>
-                            <input class="form-control {{(!empty($errors->first('subject')) ? 'is-invalid' : '')}}" type="text" name="subject" required="" placeholder="{{ __('Subject') }}">
-                            <div class="invalid-feedback">
-                                {{ $errors->first('subject') }}
+                            <div class="form-group col">
+                                <label class="require form-label">ADICION</label>
+                                <input class="form-control {{(!empty($errors->first('subject')) ? 'is-invalid' : '')}}" type="text" name="adicion_der" required="" placeholder="{{ __('Subject') }}">
+                                <div class="invalid-feedback">
+                                    {{ $errors->first('subject') }}
+                                </div>
                             </div>
-                        </div>
+                            <div class="form-group col">
+                                <label class="require form-label">D.N.P.</label>
+                                <input class="form-control {{(!empty($errors->first('subject')) ? 'is-invalid' : '')}}" type="text" name="dnp_der" required="" placeholder="{{ __('Subject') }}">
+                                <div class="invalid-feedback">
+                                    {{ $errors->first('subject') }}
+                                </div>
+                            </div>
+                            <div class="form-group col">
+                                <label class="require form-label">ALTURA</label>
+                                <input class="form-control {{(!empty($errors->first('subject')) ? 'is-invalid' : '')}}" type="text" name="altura_der" required="" placeholder="{{ __('Subject') }}">
+                                <div class="invalid-feedback">
+                                    {{ $errors->first('subject') }}
+                                </div>
+                            </div>
                         </div>
 
 
-                  <div class="row">    
-                        <div class="form-group col-md-1">
-                            <label class="require form-label">O.I.</label>
-                            
-                        </div>
-                        <div class="form-group col">
-    <input class="form-control {{(!empty($errors->first('subject')) ? 'is-invalid' : '')}}" type="text" name="subject" required="" placeholder="{{ __('Subject') }}">
-                            <div class="invalid-feedback">
-                                {{ $errors->first('subject') }}
+                        <div class="row text-center">
+                            <div class="form-group col-md-1">
+                                <label class="require form-label">O.I.</label>
+
+                            </div>
+                            <div class="form-group col">
+                                <!-- ESFEREA IZQ -->
+                                <input class="form-control {{(!empty($errors->first('subject')) ? 'is-invalid' : '')}}" type="text" name="esfera_izq" required="" placeholder="{{ __('Subject') }}">
+                                <div class="invalid-feedback">
+                                    {{ $errors->first('subject') }}
+                                </div>
+                            </div>
+                            <div class="form-group col">
+                                <!-- CILINDRO IZQ -->
+                                <input class="form-control {{(!empty($errors->first('subject')) ? 'is-invalid' : '')}}" type="text" name="cilindro_izq" required="" placeholder="{{ __('Subject') }}">
+                                <div class="invalid-feedback">
+                                    {{ $errors->first('subject') }}
+                                </div>
+                            </div>
+                            <div class="form-group col">
+                                <!-- EJE IZQ -->
+                                <input class="form-control {{(!empty($errors->first('subject')) ? 'is-invalid' : '')}}" type="text" name="eje_izq" required="" placeholder="{{ __('Subject') }}">
+                                <div class="invalid-feedback">
+                                    {{ $errors->first('subject') }}
+                                </div>
+                            </div>
+                            <div class="form-group col">
+                                <!-- ADICION IZQ -->
+                                <input class="form-control {{(!empty($errors->first('subject')) ? 'is-invalid' : '')}}" type="text" name="adicion_izq" required="" placeholder="{{ __('Subject') }}">
+                                <div class="invalid-feedback">
+                                    {{ $errors->first('subject') }}
+                                </div>
+                            </div>
+                            <div class="form-group col">
+                                <!-- DNP IZQ -->
+                                <input class="form-control {{(!empty($errors->first('subject')) ? 'is-invalid' : '')}}" type="text" name="dnp_izq" required="" placeholder="{{ __('Subject') }}">
+                                <div class="invalid-feedback">
+                                    {{ $errors->first('subject') }}
+                                </div>
+                            </div>
+                            <div class="form-group col">
+                                <!-- ALTURA IZQ -->
+                                <input class="form-control {{(!empty($errors->first('subject')) ? 'is-invalid' : '')}}" type="text" name="altura_izq" required="" placeholder="{{ __('Subject') }}">
+                                <div class="invalid-feedback">
+                                    {{ $errors->first('subject') }}
+                                </div>
                             </div>
                         </div>
-                        <div class="form-group col">
-    
-                        <input class="form-control {{(!empty($errors->first('subject')) ? 'is-invalid' : '')}}" type="text" name="subject" required="" placeholder="{{ __('Subject') }}">
-                            <div class="invalid-feedback">
-                                {{ $errors->first('subject') }}
-                            </div>
-                        </div>
-                        <div class="form-group col">
-    
-                        <input class="form-control {{(!empty($errors->first('subject')) ? 'is-invalid' : '')}}" type="text" name="subject" required="" placeholder="{{ __('Subject') }}">
-                            <div class="invalid-feedback">
-                                {{ $errors->first('subject') }}
-                            </div>
-                        </div>
-                        <div class="form-group col">
-                            
-                            <input class="form-control {{(!empty($errors->first('subject')) ? 'is-invalid' : '')}}" type="text" name="subject" required="" placeholder="{{ __('Subject') }}">
-                            <div class="invalid-feedback">
-                                {{ $errors->first('subject') }}
-                            </div>
-                        </div>                     
-                        <div class="form-group col">
-                            
-                            <input class="form-control {{(!empty($errors->first('subject')) ? 'is-invalid' : '')}}" type="text" name="subject" required="" placeholder="{{ __('Subject') }}">
-                            <div class="invalid-feedback">
-                                {{ $errors->first('subject') }}
-                            </div>
-                        </div>
-                        <div class="form-group col">
-                            
-                            <input class="form-control {{(!empty($errors->first('subject')) ? 'is-invalid' : '')}}" type="text" name="subject" required="" placeholder="{{ __('Subject') }}">
-                            <div class="invalid-feedback">
-                                {{ $errors->first('subject') }}
-                            </div>
-                        </div>
-                        </div>    
 
                         <!-- // FORMULARIO -->
                         <!-- // FORMULARIO -->
-                        <!-- // FORMULARIO -->
-                        <!-- // FORMULARIO -->
+
+                        <hr />
+                        <div class="row">
+                            <div class="col-12 text-center">
+                                <h5>MEDIDAS DEL ARMAZÓN</h5>
+                            </div>
+                            <div class="row text-center mt-3">
+                                <div class="form-group col">
+                                    <label>Horizontal</label>
+                                    <input class="form-control" type="text" name="horizontal" placeholder="">
+                                </div>
+
+                                <div class="form-group col">
+                                    <label>Puente</label>
+                                    <input class="form-control" type="text" name="puente" placeholder="">
+                                </div>
+
+                                <div class="form-group col">
+                                    <label>Vertical</label>
+                                    <input class="form-control" type="text" name="vertical" placeholder="">
+                                </div>
+
+                                <div class="form-group col">
+                                    <label>Diagonal</label>
+                                    <input class="form-control" type="text" name="diagonal" placeholder="">
+                                </div>
+                            </div>
+                        </div>
+                     
+                     
+                        <!-- //////////////////////    
+                                TIPO DE LENTE
+                            ////////////////////// -->
+
+
+                            <hr />
+                        <div class="row">
+                        
+                            <div class="row text-center mt-3">
+                                <div class="form-group col">
+                                    <label>Tipo de lente</label>
+                                    <input class="form-control" type="text" name="tipo_lente" placeholder="">
+                                </div>
+                          
+                                <div class="form-group col">
+                                    <label>Biselado</label>
+                                    <input class="form-control" type="text" name="biselado" placeholder="">
+                                </div>
+                          
+                                <div class="form-group col">
+                                    <label>Tipo armazón</label>
+                                    <input class="form-control" type="text" name="tipo_armazon" placeholder="">
+                                </div>
+                          
+                                <div class="form-group col">
+                                    <label>Material</label>
+                                    <input class="form-control" type="text" name="material" placeholder="">
+                                </div>
+                                <div class="form-group col">
+                                    <label>Tratamiento</label>
+                                    <input class="form-control" type="text" name="tratamiento" placeholder="">
+                                </div>
+                                <div class="form-group col">
+                                    <label>Tinte</label>
+                                    <input class="form-control" type="text" name="tinte" placeholder="">
+                                </div>
+                            </div>
+                        </div>
 
 
 
 
-
+                        <!-- //////////////////////    
+                               DESCRIPCIÓN
+                            ////////////////////// -->
 
                         <div class="form-group col-md-12">
-                            <label class="require form-label">{{ __('Description') }}</label>
+                            <label class="form-label">{{ __('Description') }}</label>
                             <textarea name="description" class="form-control ckdescription {{(!empty($errors->first('description')) ? 'is-invalid' : '')}}"></textarea>
                             <div class="invalid-feedback">
                                 {{ $errors->first('description') }}
                             </div>
                         </div>
-                        @if(!$customFields->isEmpty())
-                        @include('admin.customFields.formBuilder')
-                        @endif
                     </div>
                     <div class="d-flex justify-content-end text-end">
                         <a class="btn btn-secondary btn-light btn-submit" href="{{route('admin.tickets.index')}}">{{ __('Cancel') }}</a>
@@ -260,18 +326,18 @@
 </script>
 
 <script>
-  // Obtén el input y su contenedor
-  const valorInput = document.getElementById('valorInput');
-  const valorInputContainer = valorInput.closest('.container');
+    // Obtén el input y su contenedor
+    const valorInput = document.getElementById('valorInput');
+    const valorInputContainer = valorInput.closest('.container');
 
-  // Agrega un evento de cambio al input para validar el rango
-  valorInput.addEventListener('input', function () {
-    const valor = parseFloat(valorInput.value);
-    if (isNaN(valor) || valor < -6 || valor > 8) {
-      valorInput.classList.add('is-invalid');
-    } else {
-      valorInput.classList.remove('is-invalid');
-    }
-  });
+    // Agrega un evento de cambio al input para validar el rango
+    valorInput.addEventListener('input', function() {
+        const valor = parseFloat(valorInput.value);
+        if (isNaN(valor) || valor < -6 || valor > 8) {
+            valorInput.classList.add('is-invalid');
+        } else {
+            valorInput.classList.remove('is-invalid');
+        }
+    });
 </script>
 @endpush

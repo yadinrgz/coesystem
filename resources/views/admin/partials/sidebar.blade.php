@@ -72,11 +72,11 @@
                 </li> 
                 @endif
                 @if (\Auth::user()->parent == 0)
-              <!--   @can('manage-setting')
+                 @can('manage-setting')
                      <li class="dash-item {{ request()->is('*setting*') ? ' active' : '' }}">
                         <a href="{{ route('admin.settings.index') }}" class="dash-link"><span class="dash-micon"><i class="ti ti-settings"></i></span><span class="dash-mtext">{{ __('Settings') }}</span></a>
                     </li> 
-                @endcan -->
+                @endcan 
                 @endif
             </ul>
         </div>

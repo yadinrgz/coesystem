@@ -33,7 +33,7 @@ class ConfirmablePasswordController extends Controller
             'password' => $request->password,
         ])) {
             throw ValidationException::withMessages([
-                'password' => __('These credentials do not match our records.'),
+                'password' => __('Estas credenciales no coinciden con nuestros registros.'),
             ]);
         }
 

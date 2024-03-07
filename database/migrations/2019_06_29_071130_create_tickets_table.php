@@ -33,11 +33,22 @@ class CreateTicketsTable extends Migration
             $table->string('dnp_der');
             $table->string('altura_izq');
             $table->string('altura_der');
+            $table->string('horizontal');
+            $table->string('puente');
+            $table->string('vertical');
+            $table->string('diagonal');
+            $table->string('tipo_lente');
+            $table->string('biselado');
+            $table->string('tipo_armazon');
+            $table->string('material');
+            $table->string('tratamiento');
+            $table->string('tinte');   
             $table->longText('description');
             $table->longText('attachments');
             $table->timestamps();
         });
     }
+
 
     /**
      * Reverse the migrations.

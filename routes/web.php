@@ -17,6 +17,7 @@ use App\Http\Controllers\KnowledgeController;
 use App\Http\Controllers\KnowledgebaseCategoryController;
 use App\Http\Controllers\EmailTemplateController;
 use App\Http\Controllers\EmailTemplateLangController;
+use App\Http\Controllers\MarcasController;
 
 /*
 |--------------------------------------------------------------------------
@@ -68,8 +69,17 @@ Route::name('admin.')->prefix('admin')->middleware(['auth','XSS'])->group(functi
 
 
 //RUTAS CATALOGOS
-    Route::get('catalogo/create', [CatalogoController::class, 'create'])->name('catalogo.create');
+//    Route::get('catalogo/create', [CatalogoController::class, 'create'])->name('catalogo.create');
     // Agrega otras rutas según sea necesario
+
+//    Route::resource('marcas', MarcasController::class);
+    Route::get('catalogo/marcas', [MarcasController::class, 'index'])->name('marcas');
+   Route::get('marcas', [MarcasController::class, 'index'])->name('marcas');
+
+    Route::get('/admin/catalogos/marcas/create', [MarcasController::class, 'create'])->name('admin.catalogos.marcas.create');
+    Route::post('/admin/catalogos/marcas', [MarcasController::class, 'store'])->name('admin.catalogos.marcas.store');
+    
+
 
     Route::get('category/create', [CategoryController::class, 'create'])->name('category.create');
     Route::post('category', [CategoryController::class, 'store'])->name('category.store');
@@ -160,4 +170,4 @@ Route::post('email_template_status/{pid}', [EmailTemplateController::class, 'upd
 
 Route::resource('email_template', EmailTemplateController::class)->middleware(['auth','XSS','revalidate']);
 
-Route::resource('email_template_lang', EmailTemplateLangController::class)->middleware(['auth','XSS','revalidate']);
+//Route::resource('email_template_lang', EmailTemplateLangController::class)->middleware(['auth','XSS','revalidate']);

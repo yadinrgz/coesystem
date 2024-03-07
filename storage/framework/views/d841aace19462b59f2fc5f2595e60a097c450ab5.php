@@ -36,7 +36,7 @@ if ($_SERVER["REQUEST_METHOD"] == "POST") {
 <?php $__env->startSection('page-title'); ?>
 <?php echo e(__('Email Templates')); ?>
 
-@endsectiona
+<?php $__env->stopSection(); ?>
 
 <?php $__env->startSection('breadcrumb'); ?>
     <li class="breadcrumb-item"><a href="<?php echo e(route('home')); ?>"><?php echo e(__('Home')); ?></a></li>

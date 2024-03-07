@@ -11,14 +11,14 @@
 @endphp
 @section('content')
 
-    <div class="auth-wrapper auth-v1">
+<!--     <div class="auth-wrapper auth-v1">
         <div class="bg-auth-side bg-primary"></div>
         <div class="auth-content">
-
+        <h1>jindex bladeee</h1>
             <nav class="navbar navbar-expand-md navbar-dark default dark_background_color">
                 <div class="container-fluid pe-2">
                     <a class="navbar-brand" href="#">
-                        
+                 
                         <img src="{{ $logos.'logo-light.png' }}" alt="logo" />
                         {{-- <img src="{{ asset('assets/images/logo-white.png') }}" alt="logo" /> --}}
                     </a>
@@ -112,7 +112,7 @@
             </div>
 
         </div>
-    </div>
+    </div> -->
 
     <div class="row w-100 pb-2">
         <div class="col-sm-12 col-md-2 col-lg-2">

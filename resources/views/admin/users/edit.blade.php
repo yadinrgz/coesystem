@@ -18,6 +18,7 @@
         <div class="col-12">
             <div class="card">
                 <div class="card-body">
+                    <h1>EDIT BLADE USERS</h1>
                     <form method="post" action="{{route('admin.users.update',$user->id)}}" enctype="multipart/form-data">
                         @csrf
                         @method('PUT')
